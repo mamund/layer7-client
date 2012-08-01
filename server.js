@@ -1,3 +1,5 @@
+/* example oauth general support client */
+// 2012-08-01 (mca)
 
 var http = require("http")
   , authom = require("authom")
@@ -6,32 +8,26 @@ var http = require("http")
 
   , questions = Buffer(
       "<html>" +
-        "<body style='font: 300% sans-serif'>" +
-          "<div><a href='/auth/37signals'>Who am I on 37Signals?</a></div>" +
-          "<div><a href='/auth/dwolla'>Who am I on Dwolla?</a></div>" +
-          "<div><a href='/auth/github'>Who am I on Github?</a></div>" +
-          "<div><a href='/auth/google'>Who am I on Google?</a></div>" +
-          "<div><a href='/auth/facebook'>Who am I on Facebook?</a></div>" +
-          "<div><a href='/auth/foursquare'>Who am I on Foursquare?</a></div>" +
-          "<div><a href='/auth/gowalla'>Who am I on Gowalla?</a></div>" +
-          "<div><a href='/auth/instagram'>Who am I on Instagram?</a></div>" +
-          "<div><a href='/auth/meetup'>Who am I on Meetup?</a></div>" +
-          "<div><a href='/auth/soundcloud'>Who am I on SoundCloud?</a></div>" +
-          "<div><a href='/auth/twitter'>Who am I on Twitter?</a></div>" +
-          "<div><a href='/auth/windowslive'>Who am I on Windows Live?</a></div>" +
+        "<body>" +
+          "<h4><a href='/auth/twitter'>Who am I on Twitter?</a></h4>" +
         "</body>" +
       "</html>"
-    )
+    );
 
 server.on("request", function(req, res) {
   res.writeHead(200, {
     "Content-Type": "text/html",
     "Content-Length": questions.length
-  })
+  });
+  res.end(questions);
+});
 
-  res.end(questions)
-})
-
+authom.createSerer({
+	service : "twitter",
+	id : "kmKazK4bmb1KikkVTOwDiA",
+	secret : "SwC8yrDIpYFG0XbIdipWnftsUIyRRkIF4MlTGsQAEs"
+});
+/*
 authom.createServer({
   service: "github",
   id: "7e38d12b740a339b2d31",
@@ -105,12 +101,13 @@ authom.createServer({
   id: "LwjCfHAugMghuYtHLS9Ugw",
   secret: "etam3XHqDSDPceyHti6tRQGoywiISY0vZWfzhQUxGL4"
 })
+*/
 
 authom.on("auth", function(req, res, data) {
   var answer = Buffer(
     "<html>" +
       "<body>" +
-        "<div style='font: 300% sans-serif'>You are " + data.id + " on " + data.service + ".</div>" +
+        "<div>You are " + data.id + " on " + data.service + ".</div>" +
         "<pre><code>" + JSON.stringify(data, null, 2) + "</code></pre>" +
       "</body>" +
     "</html>"
