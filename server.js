@@ -22,7 +22,7 @@ server.on("request", function(req, res) {
   res.end(questions);
 });
 
-authom.createSerer({
+authom.createServer({
 	service : "twitter",
 	id : "kmKazK4bmb1KikkVTOwDiA",
 	secret : "SwC8yrDIpYFG0XbIdipWnftsUIyRRkIF4MlTGsQAEs"
