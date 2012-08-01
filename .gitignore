@@ -1,2 +1,5 @@
 # no local modules
 node_modules/**/*
+# no error logs
+azure_error/**/*
+
