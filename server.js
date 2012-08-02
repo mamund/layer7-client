@@ -31,6 +31,15 @@ server.on("request", function(req, res) {
   res.end(questions);
 });
 
+
+authom.createServer({
+  service: "layer7",
+  id: "040f891e-0cc7-4114-b80c-525a92be7e27",
+  secret: "b06c39b6-b795-449c-8294-8a0e352dfa00",
+  scope: "willow_testscope",
+  state: "sports"
+});
+
 // github
 authom.createServer({
   service: "github",
@@ -39,7 +48,7 @@ authom.createServer({
   state: 'sports'
 });
 
-// supply oauth service data
+// twitter
 authom.createServer({
 	service : "twitter",
 	id : "kmKazK4bmb1KikkVTOwDiA",
