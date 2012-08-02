@@ -35,7 +35,8 @@ server.on("request", function(req, res) {
 authom.createServer({
   service: "github",
   id: "8fd3e3dafb8a7af5717d",
-  secret: "7bec1919f3960bea3d14de3b6194e8e4b3abcbd1"
+  secret: "7bec1919f3960bea3d14de3b6194e8e4b3abcbd1",
+  state: 'sports'
 });
 
 // supply oauth service data
