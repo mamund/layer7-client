@@ -12,8 +12,13 @@ var port = process.env.PORT || 1337;
 var questions = Buffer(
 	"<html>" +
 		"<body>" +
-			"<h4><a href='/auth/twitter'>Who am I on Twitter?</a></h4>" +
-		"</body>" +
+			"<h4>Links</h4>" +
+			"<ul>" +
+				"<li><a href='/auth/twitter'>Who am I on Twitter?</a></li>" +
+				"<li><a href='/auth/github'>who am i on Github?</a></li>" +
+				"<li><a href='/auth/layer7'>Layer 7 Data</a></li>" +
+			"</ul>" +
+			"</body>" +
 	"</html>"
 	);
 
@@ -26,6 +31,19 @@ server.on("request", function(req, res) {
   res.end(questions);
 });
 
+
+authom.createServer({
+  service: "github",
+  id: "8fd3e3dafb8a7af5717d",
+  secret: "7bec1919f3960bea3d14de3b6194e8e4b3abcbd1"
+})
+
+// layer7 oauth2
+authom.createServer({
+  service: "layer7",
+  id: "040f891e-0cc7-4114-b80c-525a92be7e27",
+  secret: "b06c39b6-b795-449c-8294-8a0e352dfa00"
+})
 // supply oauth service data
 authom.createServer({
 	service : "twitter",
